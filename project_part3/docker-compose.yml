@@ -1,0 +1,28 @@
+# Docker Compose file for the microservices using PostgreSQL database in Render
+version: '3.8'
+
+services:
+  book_catalog:
+    build:
+      context: .
+      dockerfile: ./book_catalog/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://miranda_pena_carrasquillo:UewJJu68xtuyTYJxairzvyZNl4UlVFqy@dpg-cr9qj40gph6c73d42bm0-a.singapore-postgres.render.com/library_db_l7q6
+    ports:
+      - "8000:8000"
+    networks:
+      - microservices_network
+
+  inventory_management:
+    build:
+      context: .
+      dockerfile: ./inventory_management/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://miranda_pena_carrasquillo:UewJJu68xtuyTYJxairzvyZNl4UlVFqy@dpg-cr9qj40gph6c73d42bm0-a.singapore-postgres.render.com/library_db_l7q6
+    ports:
+      - "8001:8000"
+    networks:
+      - microservices_network
+
+networks:
+  microservices_network:
