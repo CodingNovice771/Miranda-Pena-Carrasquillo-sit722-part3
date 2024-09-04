@@ -19,7 +19,7 @@ spec:
       - name: book-catalog
         image: project3.azurecr.io/book_catalog:1 
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
         env:
         - name: DATABASE_URL
           value: "postgresql://miranda_pena_carrasquillo:UewJJu68xtuyTYJxairzvyZNl4UlVFqy@dpg-cr9qj40gph6c73d42bm0-a.singapore-postgres.render.com/library_db_l7q6"
@@ -45,7 +45,7 @@ spec:
       - name: inventory-management
         image: project3.azurecr.io/inventory_management:1
         ports:
-        - containerPort: 8081
+        - containerPort: 8000
         env:
         - name: DATABASE_URL
           value: "postgresql://miranda_pena_carrasquillo:UewJJu68xtuyTYJxairzvyZNl4UlVFqy@dpg-cr9qj40gph6c73d42bm0-a.singapore-postgres.render.com/library_db_l7q6"
@@ -60,8 +60,8 @@ spec:
     app: book-catalog
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8000
+      targetPort: 8000
   type: LoadBalancer
 
 ---
@@ -74,6 +74,6 @@ spec:
     app: inventory-management
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
+      port: 8000
+      targetPort: 8000
   type: LoadBalancer
